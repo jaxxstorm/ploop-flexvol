@@ -1,0 +1,7 @@
+package: .
+import:
+- package: github.com/dustin/go-humanize
+- package: github.com/jaxxstorm/flexvolume
+- package: github.com/kolyshkin/goploop-cli
+- package: github.com/urfave/cli
+  version: ^1.19.1

@@ -1,0 +1,12 @@
+hash: 62d3309c9160e999c54858de68abfc199f24dccdb63c7a5da34364be150e52cb
+updated: 2017-02-08T14:03:24.518567379+11:00
+imports:
+- name: github.com/dustin/go-humanize
+  version: 7a41df006ff9af79a29f0ffa9c5f21fbe6314a2d
+- name: github.com/jaxxstorm/flexvolume
+  version: b65378104ef0f49af77d6f73d87da7e78d0f8252
+- name: github.com/kolyshkin/goploop-cli
+  version: 5365b446a713e31ac4f2026b05a6dac27bbdf21c
+- name: github.com/urfave/cli
+  version: 0bdeddeeb0f650497d603c4ad7b20cfe685682f6
+testImports: []
