@@ -17,10 +17,10 @@ Run `glide up` to install your dependencies.
 ```
 $ glide up
 [INFO]  Downloading dependencies. Please wait...
-[INFO]  --> Fetching updates for github.com/jaxxstorm/flexvolume.
+[INFO]  --> Fetching updates for github.com/dustin/go-humanize.
 [INFO]  --> Fetching updates for github.com/urfave/cli.
 [INFO]  --> Fetching updates for github.com/kolyshkin/goploop-cli.
-[INFO]  --> Fetching updates for github.com/dustin/go-humanize.
+[INFO]  --> Fetching updates for github.com/jaxxstorm/flexvolume.
 [INFO]  --> Detected semantic version. Setting version for github.com/urfave/cli to v1.19.1.
 [INFO]  Resolving imports
 [INFO]  Downloading dependencies. Please wait...
