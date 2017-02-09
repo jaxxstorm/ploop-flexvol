@@ -27,7 +27,7 @@ Release:        1%{?dist}
 Summary:        Ploop Flexvolume Plugin for Kubernetes
 License:        MIT
 URL:            https://%{provider_prefix}
-Source0:        https://%{provider_prefix}/archive/%{commit}/%{repo}-%{version}.tar.gz
+Source: 	%{name}-%{version}.tar.gz
 
 # e.g. el6 has ppc64 arch without gcc-go, so EA tag is required
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
@@ -37,11 +37,13 @@ BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
 %description
 %{summary}
 
-%setup -q -n %{repo}-%{commit}
+%prep
+
+%setup -q -n %{name}-%{version}
 
 %build
-
-mkdir -p %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{repo}
+ls -alh
+mkdir -p %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{bin}
 export GOPATH=$(pwd):%{gopath}
 go get -u github.com/jaxxstorm/flexvolume
 go get -u github.com/kolyshkin/goploop-cli
@@ -51,13 +53,15 @@ go build -o %{bin} main.go
 
 
 %install
-mkdir -p %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{repo}
-%{__install} -m0755 ploop %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{repo}
+mkdir -p %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{bin}
+%{__install} -m0755 ploop %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{bin}/%{bin}
 
 
 %files
 %defattr(-,root,root,755)
-%{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{repo}/%{bin}
+/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{bin}/%{bin}
+
+%clean
 
 %post
 
@@ -65,15 +69,5 @@ mkdir -p %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{proje
 %{!?_licensedir:%global license %doc}
 
 %changelog
-* Thu Feb 09 2017 Unknown name 0.2-1
+* Thu Feb 09 2017 Unknown name 0.1-1
 - new package built with tito
-
-* Fri Nov 18 2016 Kir Kolyshkin <kir@openvz.org> 0.6-1
-- Add reporting global scope in case we're on vstorage
-- all dependencies updated
-- use tito for build
-
-* Wed Jun 01 2016 Kir Kolyshkin - 0-0.1.git962397b
-- First package for Fedora
-
-
