@@ -23,7 +23,7 @@
 
 Name:           %{repo}
 Version:        0.1
-Release:        1%{?dist}
+Release:        1
 Summary:        Ploop Flexvolume Plugin for Kubernetes
 License:        MIT
 URL:            https://%{provider_prefix}
