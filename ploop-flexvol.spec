@@ -22,8 +22,8 @@
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:           %{repo}
-Version:        0.2
-Release:        1%{?dist}
+Version:        0.1
+Release:        1
 Summary:        Ploop Flexvolume Plugin for Kubernetes
 License:        MIT
 URL:            https://%{provider_prefix}
@@ -69,8 +69,5 @@ mkdir -p %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{proje
 %{!?_licensedir:%global license %doc}
 
 %changelog
-* Thu Feb 09 2017 Lee Briggs <lbriggs@apptio.com> 0.2-1
-- new package built with tito
-
-* Thu Feb 09 2017 Unknown name 0.1-1
+* Thu Feb 09 2017 Lee Briggs <lbriggs@apptio.com> 0.1-1
 - new package built with tito
