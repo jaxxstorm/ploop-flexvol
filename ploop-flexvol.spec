@@ -33,6 +33,8 @@ Source: 	%{name}-%{version}.tar.gz
 ExclusiveArch:  %{?go_arches:%{go_arches}}%{!?go_arches:%{ix86} x86_64 %{arm}}
 # If go_compiler is not set to 1, there is no virtual provide. Use golang instead.
 BuildRequires:  %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang}
+BuildRequires: ploop-devel
+BuildRequires: git
 
 %description
 %{summary}
