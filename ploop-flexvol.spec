@@ -46,11 +46,10 @@ BuildRequires: git
 %build
 ls -alh
 mkdir -p %{buildroot}/usr/libexec/kubernetes/kubelet-plugins/volume/exec/%{project}~%{bin}
+mkdir -p src/github.com/jaxxstorm
+ln -s ../../../ src/github.com/jaxxstorm/ploop-flexvol
 export GOPATH=$(pwd):%{gopath}
-go get -u github.com/jaxxstorm/flexvolume
-go get -u github.com/kolyshkin/goploop-cli
-go get -u github.com/dustin/go-humanize
-go get -u github.com/urfave/cli
+cd src/github.com/jaxxstorm/ploop-flexvol
 go build -o %{bin} main.go
 
 
