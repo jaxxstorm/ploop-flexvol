@@ -129,7 +129,12 @@ func (p Ploop) Mount(target, device string, options map[string]string) flexvolum
 	if m, _ := volume.IsMounted(); !m {
 		// If it's mounted, let's mount it!
 
-		mp := ploop.MountParam{Target: target}
+		readonly := false
+		if options["kubernetes.io/readwrite"] == "ro" {
+			readonly = true
+		}
+
+		mp := ploop.MountParam{Target: target, Readonly: readonly}
 
 		dev, err := volume.Mount(&mp)
 		if err != nil {
